@@ -28,14 +28,12 @@
   });
 </script>
 
-<main>
-  <ul>
-    {#each refugees as { agentId, timestamp, userName }}
-      {#if userName}
-        <li>
-          {agentId} rescued on {new Date(timestamp).toISOString().slice(0, 10)}
-        </li>
-      {/if}
-    {/each}
-  </ul>
-</main>
+<ul>
+  {#each refugees as { agentId, timestamp, userName }}
+    {#if userName}
+      <li>
+        {agentId} rescued on {new Date(timestamp).toISOString().slice(0, 10)}
+      </li>
+    {/if}
+  {/each}
+</ul>

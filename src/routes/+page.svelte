@@ -35,34 +35,24 @@
   };
 </script>
 
-<main>
-  <h1 class="text-4xl font-bold uppercase font-mono tracking-wide">Welcome</h1>
+<h1 class="text-4xl font-bold uppercase font-mono tracking-wide">Welcome</h1>
 
-  <form
-    on:submit|preventDefault={handleUpload}
-    class="flex justify-center flex-col m-4 w-96 h-32"
-  >
-    <textarea
-      id="paste-target"
-      class="w-full h-full p-4 resize-none border border-slate-800"
-      name="paste-target"
-      placeholder="Please place Marle here"
-      bind:value={textAreaValue}
-    />
-    <button type="submit">Upload</button>
-  </form>
-  {#if showCorruptedMessage}
-    <p>corrupted</p>
-  {/if}
-</main>
+<form
+  on:submit|preventDefault={handleUpload}
+  class="flex justify-center flex-col m-4 w-96 h-32"
+>
+  <textarea
+    id="paste-target"
+    class="w-full h-full p-4 resize-none border border-slate-800"
+    name="paste-target"
+    placeholder="Please place Marle here"
+    bind:value={textAreaValue}
+  />
+  <button type="submit">Upload</button>
+</form>
+{#if showCorruptedMessage}
+  <p>corrupted</p>
+{/if}
 
 <style>
-  main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
 </style>
