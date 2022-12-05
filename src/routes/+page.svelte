@@ -40,17 +40,17 @@
     on:submit|preventDefault={handleUpload}
     class="flex justify-center flex-col h-32 gap-8 p-5 text-center"
   >
-    <h1 class="text-4xl uppercase tracking-wide">Welcome</h1>
+    <h1 class="text-5xl uppercase tracking-wide">Welcome</h1>
     <textarea
       id="paste-target"
-      class="w-full h-full p-4 resize-none flex-shrink-0"
+      class="w-full h-full p-4 resize-none flex-shrink-0 text-xl"
       name="paste-target"
       placeholder="Please place Marle here"
       rows={5}
       required
       bind:value={textAreaValue}
     />
-    <button class="p-2" type="submit">Upload</button>
+    <button class="p-2 text-xl" type="submit">Upload</button>
     {#if showCorruptedMessage}
       <p>⚠ Agent data corrupted ⚠</p>
     {:else}

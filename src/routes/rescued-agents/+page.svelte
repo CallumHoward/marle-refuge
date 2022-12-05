@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { addDoc, collection, getDocs } from "firebase/firestore";
+  import { collection, getDocs } from "firebase/firestore";
   import { db } from "$lib/firebase/app";
   import { onMount } from "svelte";
-  import { b64_to_utf8 } from "$lib/utils";
+  import { fly } from "svelte/transition";
 
   type MessageRecord = {
     from: string;
@@ -29,9 +29,12 @@
 </script>
 
 <ul class="p-10">
-  {#each refugees as { agentId, timestamp, userName }}
+  {#each refugees as { agentId, timestamp, userName }, i}
     {#if userName}
-      <li>
+      <li
+        class="text-2xl"
+        transition:fly={{ delay: i * 500, duration: 300, y: 10 }}
+      >
         {agentId} rescued on {new Date(timestamp).toISOString().slice(0, 10)}
       </li>
     {/if}
