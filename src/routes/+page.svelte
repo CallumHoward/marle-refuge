@@ -21,14 +21,18 @@
 
   let refugees: Refugee[] = [];
   let textAreaValue = "";
+  let showCorruptedMessage = false;
 
   const handleUpload = () => {
-    // Deserialise
-    const refugee = JSON.parse(b64_to_utf8(textAreaValue)) as Refugee;
-    console.log("LOG refugee: ", refugee);
+    try {
+      // Deserialise
+      const refugee = JSON.parse(b64_to_utf8(textAreaValue)) as Refugee;
 
-    // Upload to Firebase Firestore
-    addDoc(refugeesCollection, refugee);
+      // Upload to Firebase Firestore
+      addDoc(refugeesCollection, refugee);
+    } catch (e) {
+      showCorruptedMessage = true;
+    }
   };
 
   onMount(async () => {
