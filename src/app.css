@@ -1,7 +1,26 @@
 @tailwind base;
 
-html, body {
+:root {
+  --accent-color: rgba(253, 162, 41, 1);
+  --accent-color-25: rgba(253, 162, 41, 0.25);
+}
+
+html,
+body {
   height: 100%;
+  background: black;
+  font-family: "Courier New", Courier, monospace;
+}
+
+p,
+h1,
+h2,
+h3,
+button,
+textarea,
+textarea::placeholder,
+li {
+  color: var(--accent-color);
 }
 
 @tailwind components;
