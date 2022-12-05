@@ -1,7 +1,6 @@
 <script lang="ts">
   import { addDoc, collection, getDocs } from "firebase/firestore";
   import { db } from "$lib/firebase/app";
-  import { onMount } from "svelte";
   import { b64_to_utf8 } from "$lib/utils";
 
   type MessageRecord = {
@@ -34,17 +33,7 @@
       showCorruptedMessage = true;
     }
   };
-
-  onMount(async () => {
-    const querySnapshot = await getDocs(refugeesCollection);
-    querySnapshot.forEach((doc) => refugees.push(doc.data() as Refugee));
-    refugees = refugees;
-  });
 </script>
-
-<svelte:head>
-  <title>Marle Refuge</title>
-</svelte:head>
 
 <main>
   <h1 class="text-4xl font-bold uppercase font-mono tracking-wide">Welcome</h1>
@@ -60,18 +49,11 @@
       placeholder="Please place Marle here"
       bind:value={textAreaValue}
     />
-    <button>Upload</button>
+    <button type="submit">Upload</button>
   </form>
-
-  <ul>
-    {#each refugees as { agentId, timestamp, userName }}
-      {#if userName}
-        <li>
-          {agentId} rescued on {new Date(timestamp).toISOString().slice(0, 10)}
-        </li>
-      {/if}
-    {/each}
-  </ul>
+  {#if showCorruptedMessage}
+    <p>corrupted</p>
+  {/if}
 </main>
 
 <style>
