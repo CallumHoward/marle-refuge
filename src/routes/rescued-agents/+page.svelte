@@ -28,7 +28,7 @@
   });
 </script>
 
-<ul>
+<ul class="p-10">
   {#each refugees as { agentId, timestamp, userName }}
     {#if userName}
       <li>

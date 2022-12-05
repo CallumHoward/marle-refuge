@@ -37,7 +37,7 @@
 <div class="flex justify-center items-center flex-col w-full h-full">
   <form
     on:submit|preventDefault={handleUpload}
-    class="flex justify-center flex-col m-4 w-96 h-32 gap-8 text-center"
+    class="flex justify-center flex-col h-32 gap-8 p-5 text-center"
   >
     <h1 class="text-4xl uppercase tracking-wide">Welcome</h1>
     <textarea
@@ -46,6 +46,7 @@
       name="paste-target"
       placeholder="Please place Marle here"
       rows={5}
+      required
       bind:value={textAreaValue}
     />
     <button class="p-2" type="submit">Upload</button>
@@ -74,5 +75,9 @@
   textarea:hover,
   textarea:focus {
     outline: 1px solid var(--accent-color);
+  }
+
+  form {
+    width: min(100%, 500px);
   }
 </style>
