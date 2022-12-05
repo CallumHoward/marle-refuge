@@ -28,6 +28,7 @@
 
       // Upload to Firebase Firestore
       addDoc(refugeesCollection, refugee);
+      window.location.href = "/rescued-agents";
     } catch (e) {
       showCorruptedMessage = true;
     }
