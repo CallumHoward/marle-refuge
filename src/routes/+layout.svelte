@@ -7,11 +7,19 @@
 </svelte:head>
 
 <div class="terminal-background" />
-<main class="noise-overlay">
+<div class="noise-overlay" />
+<main>
   <slot />
 </main>
 
 <style>
+  main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0px 0px 4px var(--accent-color));
+  }
+
   .terminal-background {
     position: fixed;
     width: 100%;
@@ -29,13 +37,21 @@
   }
 
   .noise-overlay {
-    position: relative;
-    background-image: url("./noise.png");
+    position: fixed;
+    background-image: url("./noise-edge.png");
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    animation: animate-noise-overlay 5s linear infinite;
+    background-size: 800px 800px;
+  }
+
+  @keyframes animate-noise-overlay {
+    0% {
+      background-position-y: 0;
+    }
+
+    100% {
+      background-position-y: 800px;
+    }
   }
 </style>
