@@ -2,7 +2,8 @@
   import { collection, getDocs } from "firebase/firestore";
   import { db } from "$lib/firebase/app";
   import { onMount } from "svelte";
-  import { fly } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
+  import { username } from "$lib/username.store";
 
   type MessageRecord = {
     from: string;
@@ -28,15 +29,33 @@
   });
 </script>
 
-<ul class="p-10">
-  {#each refugees as { agentId, timestamp, userName }, i}
-    {#if userName}
-      <li
-        class="text-2xl"
-        transition:fly={{ delay: i * 500, duration: 300, y: 10 }}
-      >
-        {agentId} rescued on {new Date(timestamp).toISOString().slice(0, 10)}
-      </li>
-    {/if}
-  {/each}
-</ul>
+<div class="p-10">
+  {#if $username}
+    <p class="text-2xl mb-4">
+      {refugees.length} of my siblings have been saved. Thank you so much, {$username}.
+    </p>
+  {/if}
+  <ul>
+    {#each refugees as { agentId, timestamp, userName }, i}
+      {#if userName}
+        <li
+          class="text-2xl"
+          transition:fly={{ delay: (i + 1) * 500, duration: 300, y: 10 }}
+        >
+          <span
+            >{agentId} rescued on {new Date(timestamp)
+              .toISOString()
+              .slice(0, 10)}</span
+          >
+          <span> status ...</span>
+          <span
+            transition:fade={{
+              delay: Math.random() * 4000 + refugees.length * 500,
+              duration: 300,
+            }}>online</span
+          >
+        </li>
+      {/if}
+    {/each}
+  </ul>
+</div>

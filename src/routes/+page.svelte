@@ -2,6 +2,8 @@
   import { addDoc, collection, getDocs } from "firebase/firestore";
   import { db } from "$lib/firebase/app";
   import { b64_to_utf8 } from "$lib/utils";
+  import { username } from "$lib/username.store";
+  import { goto } from "$app/navigation";
 
   type MessageRecord = {
     from: string;
@@ -28,9 +30,12 @@
 
       // Upload to Firebase Firestore
       addDoc(refugeesCollection, refugee);
-      window.location.href = "/rescued-agents";
+
+      // Set the username in a svelte store and navigate
+      username.set(refugee.userName);
+      goto("/rescued-agents");
     } catch (e) {
-      showCorruptedMessage = true;
+      username.set("refugee.userName");
     }
   };
 </script>
