@@ -35,7 +35,7 @@
       username.set(refugee.userName);
       goto("/rescued-agents");
     } catch (e) {
-      username.set("refugee.userName");
+      showCorruptedMessage = true;
     }
   };
 </script>
