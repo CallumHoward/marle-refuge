@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { addDoc, collection, getDocs } from "firebase/firestore";
+  import { addDoc, collection } from "firebase/firestore";
   import { db } from "$lib/firebase/app";
   import { b64_to_utf8 } from "$lib/utils";
   import { username } from "$lib/username.store";
