@@ -38,7 +38,7 @@
 
   .noise-overlay {
     position: fixed;
-    background-image: url("./noise-edge.png");
+    background-image: url("https://github.com/j-fan/marle-images/raw/main/noise-edge.png");
     width: 100%;
     height: 100%;
     animation: animate-noise-overlay 5s linear infinite;
